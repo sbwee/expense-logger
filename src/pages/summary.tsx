@@ -254,15 +254,17 @@ export function SummaryPage() {
                         })}
                       </Pie>
                       <Tooltip
-                        formatter={(value: number, _name, props) => {
+                        formatter={(value, _name, props) => {
                           const slice = props.payload as CategorySlice
                           const meta = CATEGORY_META[slice.category]
+                          const numericValue =
+                            typeof value === 'number' ? value : Number(value ?? 0)
                           const percent =
                             totalPeriodSpending > 0
                               ? (slice.total / totalPeriodSpending) * 100
                               : 0
                           return [
-                            `${formatAmount(value)} (${percent.toFixed(0)}%)`,
+                            `${formatAmount(numericValue)} (${percent.toFixed(0)}%)`,
                             meta.label,
                           ]
                         }}
@@ -325,7 +327,11 @@ export function SummaryPage() {
                       tick={{ fontSize: 11 }}
                     />
                     <Tooltip
-                      formatter={(value: number) => formatAmount(value)}
+                      formatter={(value) => {
+                        const numericValue =
+                          typeof value === 'number' ? value : Number(value ?? 0)
+                        return formatAmount(numericValue)
+                      }}
                       labelFormatter={(_, payload) => {
                         const item = payload[0]?.payload as DailyTotal | undefined
                         if (!item) return ''
