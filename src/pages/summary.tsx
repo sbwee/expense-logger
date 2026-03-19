@@ -130,26 +130,26 @@ export function SummaryPage() {
   const hasData = periodExpenses.length > 0
 
   return (
-    <main className="mx-auto flex w-full max-w-4xl flex-1 flex-col gap-4 px-4 py-4">
-      <section className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-100">
+    <main className="mx-auto flex w-full max-w-4xl flex-1 flex-col gap-4 px-4 py-4 text-slate-900 dark:text-slate-100">
+      <section className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-100 dark:bg-slate-900/60 dark:ring-slate-800">
         <header className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 className="text-sm font-semibold text-slate-900">
+            <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">
               Spending summary
             </h2>
-            <p className="mt-1 text-xs text-slate-500">
+            <p className="mt-1 text-xs text-slate-500 dark:text-slate-300">
               Review your spending by category and over time.
             </p>
           </div>
           <div className="flex flex-col gap-2 sm:items-end">
-            <div className="inline-flex rounded-full bg-slate-100 p-1 text-xs font-medium text-slate-700">
+            <div className="inline-flex rounded-full bg-slate-100 p-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-200">
               <button
                 type="button"
                 onClick={() => setRange('week')}
                 className={`flex-1 rounded-full px-3 py-1 transition ${
                   range === 'week'
-                    ? 'bg-white text-slate-900 shadow-sm'
-                    : 'text-slate-500 hover:text-slate-700'
+                    ? 'bg-white text-slate-900 shadow-sm dark:bg-slate-900/60 dark:text-slate-100'
+                    : 'text-slate-500 hover:text-slate-700 dark:text-slate-300 dark:hover:text-slate-50'
                 }`}
               >
                 This week
@@ -159,8 +159,8 @@ export function SummaryPage() {
                 onClick={() => setRange('month')}
                 className={`flex-1 rounded-full px-3 py-1 transition ${
                   range === 'month'
-                    ? 'bg-white text-slate-900 shadow-sm'
-                    : 'text-slate-500 hover:text-slate-700'
+                    ? 'bg-white text-slate-900 shadow-sm dark:bg-slate-900/60 dark:text-slate-100'
+                    : 'text-slate-500 hover:text-slate-700 dark:text-slate-300 dark:hover:text-slate-50'
                 }`}
               >
                 This month
@@ -173,7 +173,7 @@ export function SummaryPage() {
                   const csv = buildExpensesCsv(expenses, 'this-month')
                   downloadCsv('expenses-this-month.csv', csv)
                 }}
-                className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-medium text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 active:scale-[0.99]"
+                className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-medium text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 active:scale-[0.99] dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-200 dark:hover:border-slate-700 dark:hover:bg-slate-900/40"
               >
                 Export this month
               </button>
@@ -183,7 +183,7 @@ export function SummaryPage() {
                   const csv = buildExpensesCsv(expenses, 'all-time')
                   downloadCsv('expenses-all-time.csv', csv)
                 }}
-                className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-medium text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 active:scale-[0.99]"
+                className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-medium text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 active:scale-[0.99] dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-200 dark:hover:border-slate-700 dark:hover:bg-slate-900/40"
               >
                 Export all time
               </button>
@@ -193,14 +193,14 @@ export function SummaryPage() {
 
         <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-[11px] uppercase tracking-wide text-slate-500">
+            <p className="text-[11px] uppercase tracking-wide text-slate-500 dark:text-slate-300">
               Total spending
             </p>
-            <p className="text-2xl font-semibold tracking-tight text-slate-900">
+            <p className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">
               {formatAmount(totalPeriodSpending)}
             </p>
           </div>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-slate-500 dark:text-slate-300">
             {range === 'week'
               ? 'Showing spending from the start of this week through today.'
               : 'Showing spending from the start of this month through today.'}
@@ -208,12 +208,12 @@ export function SummaryPage() {
         </div>
 
         {!hasData && (
-          <div className="mt-6 flex flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-slate-200 bg-slate-50/60 px-4 py-8 text-center">
+          <div className="mt-6 flex flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-slate-200 bg-slate-50/60 px-4 py-8 text-center dark:border-slate-800 dark:bg-slate-900/40">
             <div className="text-2xl">📊</div>
-            <p className="text-sm font-medium text-slate-800">
+            <p className="text-sm font-medium text-slate-800 dark:text-slate-200">
               No expenses logged yet!
             </p>
-            <p className="max-w-xs text-xs text-slate-500">
+            <p className="max-w-xs text-xs text-slate-500 dark:text-slate-300">
               Add some expenses on the dashboard to see your weekly and monthly
               charts here.
             </p>
@@ -222,11 +222,11 @@ export function SummaryPage() {
 
         {hasData && (
           <div className="mt-6 grid gap-4 md:grid-cols-2">
-            <div className="flex flex-col rounded-xl border border-slate-100 bg-slate-50/80 p-3">
-              <h3 className="text-xs font-semibold text-slate-800">
+            <div className="flex flex-col rounded-xl border border-slate-100 bg-slate-50/80 p-3 dark:border-slate-800 dark:bg-slate-900/40">
+              <h3 className="text-xs font-semibold text-slate-800 dark:text-slate-200">
                 Spending by category
               </h3>
-              <p className="mb-2 mt-1 text-[11px] text-slate-500">
+              <p className="mb-2 mt-1 text-[11px] text-slate-500 dark:text-slate-300">
                 Share of total spending in this period.
               </p>
               <div className="mt-3 grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:items-center">
@@ -280,7 +280,7 @@ export function SummaryPage() {
                     return (
                       <li
                         key={slice.category}
-                        className="flex items-center justify-between gap-3 rounded-lg bg-white/70 px-2 py-1"
+                        className="flex items-center justify-between gap-3 rounded-lg bg-white/70 px-2 py-1 dark:bg-slate-900/40"
                       >
                         <div className="flex min-w-0 items-center gap-2">
                           <span
@@ -288,11 +288,11 @@ export function SummaryPage() {
                             style={{ backgroundColor: meta.color }}
                             aria-hidden="true"
                           />
-                          <span className="truncate text-xs font-medium text-slate-800">
+                          <span className="truncate text-xs font-medium text-slate-800 dark:text-slate-200">
                             {meta.icon} {meta.label}
                           </span>
                         </div>
-                        <span className="text-xs font-semibold text-slate-900">
+                        <span className="text-xs font-semibold text-slate-900 dark:text-slate-100">
                           {formatAmount(slice.total)}
                         </span>
                       </li>
@@ -302,11 +302,11 @@ export function SummaryPage() {
               </div>
             </div>
 
-            <div className="flex flex-col rounded-xl border border-slate-100 bg-slate-50/80 p-3">
-              <h3 className="text-xs font-semibold text-slate-800">
+            <div className="flex flex-col rounded-xl border border-slate-100 bg-slate-50/80 p-3 dark:border-slate-800 dark:bg-slate-900/40">
+              <h3 className="text-xs font-semibold text-slate-800 dark:text-slate-200">
                 Spending over time
               </h3>
-              <p className="mb-2 mt-1 text-[11px] text-slate-500">
+              <p className="mb-2 mt-1 text-[11px] text-slate-500 dark:text-slate-300">
                 Daily totals for this period.
               </p>
               <div className="h-48">

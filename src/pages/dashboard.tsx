@@ -136,14 +136,14 @@ export function DashboardPage() {
     CATEGORY_OPTIONS[CATEGORY_OPTIONS.length - 1]
 
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-4 px-4 py-4">
-      <section className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-100">
+    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-4 px-4 py-4 text-slate-900 dark:text-slate-100">
+      <section className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-100 dark:bg-slate-900/60 dark:ring-slate-800">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div className="max-w-sm">
-            <h2 className="text-sm font-semibold text-slate-900">
+            <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">
               Monthly budget
             </h2>
-            <p className="mt-1 text-xs text-slate-500">
+            <p className="mt-1 text-xs text-slate-500 dark:text-slate-300">
               Set a single monthly budget. We&apos;ll warn you as you approach
               or exceed it.
             </p>
@@ -168,12 +168,12 @@ export function DashboardPage() {
                   value={budgetInput}
                   onChange={(event) => setBudgetInput(event.target.value)}
                   placeholder="e.g. 5000"
-                  className="h-9 w-full rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-900 outline-none ring-emerald-500/20 transition focus:border-emerald-600 focus:ring-2"
+                  className="h-9 w-full rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-900 outline-none ring-emerald-500/20 transition focus:border-emerald-600 focus:ring-2 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-100"
                 />
               </div>
               <button
                 type="submit"
-                className="inline-flex h-9 items-center justify-center rounded-full bg-slate-900 px-4 text-xs font-semibold text-white shadow-sm transition hover:bg-slate-800 active:scale-[0.99]"
+                className="inline-flex h-9 items-center justify-center rounded-full bg-slate-900 px-4 text-xs font-semibold text-white shadow-sm transition hover:bg-slate-800 active:scale-[0.99] dark:bg-white dark:text-slate-900"
               >
                 Save
               </button>
@@ -185,17 +185,17 @@ export function DashboardPage() {
             )}
           </div>
 
-          <div className="mt-2 w-full max-w-xs rounded-xl bg-slate-50 p-3 text-xs text-slate-700 sm:mt-0">
+          <div className="mt-2 w-full max-w-xs rounded-xl bg-slate-50 p-3 text-xs text-slate-700 dark:bg-slate-900/40 dark:text-slate-200 sm:mt-0">
             {monthlyBudget && monthlyBudget > 0 ? (
               <>
-                <div className="flex items-center justify-between text-[11px] font-medium uppercase tracking-wide text-slate-500">
+                <div className="flex items-center justify-between text-[11px] font-medium uppercase tracking-wide text-slate-500 dark:text-slate-300">
                   <span>Current month</span>
                   <span>
                     {formatAmount(currentMonthSpent)} /{' '}
                     {formatAmount(monthlyBudget)}
                   </span>
                 </div>
-                <div className="mt-2 h-2 w-full rounded-full bg-slate-200">
+                <div className="mt-2 h-2 w-full rounded-full bg-slate-200 dark:bg-slate-800">
                   <div
                     className={`h-2 rounded-full transition-all ${
                       budgetState === 'red'
@@ -212,7 +212,7 @@ export function DashboardPage() {
                     }}
                   />
                 </div>
-                <p className="mt-2 text-[11px] text-slate-600">
+                <p className="mt-2 text-[11px] text-slate-600 dark:text-slate-300">
                   {budgetState === 'red' && (
                     <>You&apos;ve exceeded your monthly budget!</>
                   )}
@@ -231,7 +231,7 @@ export function DashboardPage() {
                 </p>
               </>
             ) : (
-              <p className="text-[11px] text-slate-600">
+              <p className="text-[11px] text-slate-600 dark:text-slate-300">
                 No monthly budget set yet. Enter an amount and save to start
                 tracking your spending against it.
               </p>
@@ -240,9 +240,11 @@ export function DashboardPage() {
         </div>
       </section>
 
-      <section className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-100">
-        <h2 className="text-sm font-semibold text-slate-900">Add expense</h2>
-        <p className="mt-1 text-xs text-slate-500">
+      <section className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-100 dark:bg-slate-900/60 dark:ring-slate-800">
+        <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+          Add expense
+        </h2>
+        <p className="mt-1 text-xs text-slate-500 dark:text-slate-300">
           Amount and category are required. Description is optional.
         </p>
 
@@ -254,7 +256,7 @@ export function DashboardPage() {
             <div className="flex flex-col gap-1">
               <label
                 htmlFor="amount"
-                className="text-xs font-medium text-slate-700"
+                className="text-xs font-medium text-slate-700 dark:text-slate-200"
               >
                 Amount
               </label>
@@ -267,7 +269,7 @@ export function DashboardPage() {
                 required
                 value={amount}
                 onChange={(event) => setAmount(event.target.value)}
-                className="h-9 rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-900 outline-none ring-emerald-500/20 transition focus:border-emerald-600 focus:ring-2"
+                className="h-9 rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-900 outline-none ring-emerald-500/20 transition focus:border-emerald-600 focus:ring-2 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-100"
                 placeholder="0.00"
               />
             </div>
@@ -275,7 +277,7 @@ export function DashboardPage() {
             <div className="flex flex-col gap-1">
               <label
                 htmlFor="category"
-                className="text-xs font-medium text-slate-700"
+                className="text-xs font-medium text-slate-700 dark:text-slate-200"
               >
                 Category
               </label>
@@ -286,7 +288,7 @@ export function DashboardPage() {
                 onChange={(event) =>
                   setCategory(event.target.value as ExpenseCategory)
                 }
-                className="h-9 rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-900 outline-none ring-emerald-500/20 transition focus:border-emerald-600 focus:ring-2"
+                className="h-9 rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-900 outline-none ring-emerald-500/20 transition focus:border-emerald-600 focus:ring-2 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-100"
               >
                 <option value="">Select a category</option>
                 {CATEGORY_OPTIONS.map((option) => (
@@ -302,17 +304,19 @@ export function DashboardPage() {
             <div className="flex flex-col gap-1">
               <label
                 htmlFor="description"
-                className="text-xs font-medium text-slate-700"
+                className="text-xs font-medium text-slate-700 dark:text-slate-200"
               >
                 Description{' '}
-                <span className="font-normal text-slate-400">(optional)</span>
+                <span className="font-normal text-slate-400 dark:text-slate-400">
+                  (optional)
+                </span>
               </label>
               <input
                 id="description"
                 type="text"
                 value={description}
                 onChange={(event) => setDescription(event.target.value)}
-                className="h-9 rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-900 outline-none ring-emerald-500/20 transition focus:border-emerald-600 focus:ring-2"
+                className="h-9 rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-900 outline-none ring-emerald-500/20 transition focus:border-emerald-600 focus:ring-2 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-100"
                 placeholder="e.g. Lunch, metro ticket"
               />
             </div>
@@ -320,7 +324,7 @@ export function DashboardPage() {
             <div className="flex flex-col gap-1">
               <label
                 htmlFor="date"
-                className="text-xs font-medium text-slate-700"
+                className="text-xs font-medium text-slate-700 dark:text-slate-200"
               >
                 Date
               </label>
@@ -330,7 +334,7 @@ export function DashboardPage() {
                 required
                 value={date}
                 onChange={(event) => setDate(event.target.value)}
-                className="h-9 rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-900 outline-none ring-emerald-500/20 transition focus:border-emerald-600 focus:ring-2"
+                className="h-9 rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-900 outline-none ring-emerald-500/20 transition focus:border-emerald-600 focus:ring-2 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-100"
               />
             </div>
           </div>
@@ -350,18 +354,18 @@ export function DashboardPage() {
         </form>
       </section>
 
-      <section className="mb-4 flex-1 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-100">
+      <section className="mb-4 flex-1 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-100 dark:bg-slate-900/60 dark:ring-slate-800">
         <header className="flex items-center justify-between gap-2">
           <div>
-            <h2 className="text-sm font-semibold text-slate-900">
+            <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">
               Recent expenses
             </h2>
-            <p className="mt-1 text-xs text-slate-500">
+            <p className="mt-1 text-xs text-slate-500 dark:text-slate-300">
               Your expenses are stored on this device only.
             </p>
           </div>
           {sortedExpenses.length > 0 && (
-            <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600">
+            <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">
               {sortedExpenses.length} item
               {sortedExpenses.length > 1 ? 's' : ''}
             </span>
@@ -369,18 +373,18 @@ export function DashboardPage() {
         </header>
 
         {sortedExpenses.length === 0 ? (
-          <div className="mt-6 flex flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-slate-200 bg-slate-50/60 px-4 py-8 text-center">
+          <div className="mt-6 flex flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-slate-200 bg-slate-50/60 px-4 py-8 text-center dark:border-slate-800 dark:bg-slate-900/40">
             <div className="text-2xl">✏️</div>
             <p className="text-sm font-medium text-slate-800">
               No expenses logged yet
             </p>
-            <p className="max-w-xs text-xs text-slate-500">
+            <p className="max-w-xs text-xs text-slate-500 dark:text-slate-300">
               Start by adding your first expense above. It only takes a few
               seconds.
             </p>
           </div>
         ) : (
-          <ul className="mt-4 divide-y divide-slate-100 text-sm">
+          <ul className="mt-4 divide-y divide-slate-100 text-sm dark:divide-slate-800">
             {sortedExpenses.map((expense) => {
               const meta = getCategoryMeta(expense.category)
 
@@ -389,25 +393,25 @@ export function DashboardPage() {
                   key={expense.id}
                   className="flex items-start gap-3 py-2.5"
                 >
-                  <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-100 text-base">
+                  <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-100 text-base dark:bg-slate-800">
                     {meta.icon}
                   </div>
                   <div className="flex min-w-0 flex-1 flex-col gap-0.5">
                     <div className="flex items-baseline justify-between gap-2">
                       <div className="flex items-center gap-1.5">
-                        <span className="text-xs font-semibold text-slate-900">
+                        <span className="text-xs font-semibold text-slate-900 dark:text-slate-100">
                           {meta.label}
                         </span>
-                        <span className="text-[11px] uppercase tracking-wide text-slate-400">
+                        <span className="text-[11px] uppercase tracking-wide text-slate-400 dark:text-slate-400">
                           {formatDate(expense.date)}
                         </span>
                       </div>
-                      <span className="text-sm font-semibold text-slate-900">
+                      <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
                         {formatAmount(expense.amount)}
                       </span>
                     </div>
                     {expense.description && (
-                      <p className="truncate text-xs text-slate-500">
+                      <p className="truncate text-xs text-slate-500 dark:text-slate-300">
                         {expense.description}
                       </p>
                     )}
@@ -415,7 +419,7 @@ export function DashboardPage() {
                   <button
                     type="button"
                     onClick={() => removeExpense(expense.id)}
-                    className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-slate-200 text-xs text-slate-500 transition hover:border-rose-200 hover:bg-rose-50 hover:text-rose-600 active:scale-95"
+                    className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-slate-200 text-xs text-slate-500 transition hover:border-rose-200 hover:bg-rose-50 hover:text-rose-600 active:scale-95 dark:border-slate-800 dark:text-slate-300 dark:hover:border-rose-300/40 dark:hover:bg-rose-950/20 dark:hover:text-rose-300"
                     aria-label="Delete expense"
                   >
                     ×
